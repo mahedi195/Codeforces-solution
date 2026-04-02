@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+ 
+    int n,m;
+    cin>>n>>m;
+    vector<pair<string,int>>vp(n);
+    string s;
+ 
+    for(int i=0; i<n; i++)
+    {
+        cin>>s;
+        vp[i].first=s;;
+        vp[i].second=i+1;
+ 
+    }
+ 
+    for(int j=0;j<n;j++)
+    {
+        string st=vp[j].first;
+        for(int i=0; i<m; i++)
+        {
+            if(i%2==1)
+            {
+                st[i]='Z'-(st[i]-'A');
+            }
+            vp[j].first=st;
+        }
+    }
+   // cout<<"\n\n\n------\n";
+    //for(auto it:vp) cout<<it.first<<" "<<it.second<<"\n\n\n";
+    sort(vp.begin(),vp.end());
+    //for(auto it:vp) cout<<it.first<<" "<<it.second<<"\n\n\n";
+ 
+    for(int i=0;i<n;i++) cout<<vp[i].second<<" ";
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
