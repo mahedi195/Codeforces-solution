@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+    int n; cin>>n;
+    vector<int>w(n),h(n);
+    int weight=0;
+    for(int i=0;i<n;i++)
+    {
+        cin>>w[i]>>h[i];
+        weight+=w[i];
+    }
+    vector<int>hh(n);
+    hh=h;
+    sort(h.begin(),h.end());
+    for(int i=0;i<n;i++)
+    {
+        int ww=weight-w[i];
+        int height=0;
+        if(hh[i]==h[n-1]) height=h[n-2];
+        else height=h[n-1];
+        cout<<ww*height<<" ";
+    }
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
