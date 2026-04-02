@@ -1,0 +1,115 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+ 
+//safe unordered_map to collision free
+//codeforces blog--> Blowing up unordered_map, and how to stop getting hacked on it
+//if we get TLE after using unorder map , then we can use it
+struct custom_hash //codeforces blog--> Blowing up unordered_map, and how to stop getting hacked on it
+{
+    static uint64_t splitmix64(uint64_t x)
+    {
+ 
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+ 
+    size_t operator()(uint64_t x) const
+    {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n),v1(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+    v1=v;
+ 
+    ll initial_inversion=0;
+ 
+    int cnt0=0;
+    for(int i=n-1; i>=0; i--)
+    {
+        if(v[i]==0) cnt0++;
+        else if(v[i]==1)
+        {
+            initial_inversion+=cnt0;
+ 
+        }
+    }
+ 
+ 
+    bool first_one_found=false;
+    cnt0=0;
+    ll ans=0;
+    int pos=-1;
+    for(int i=n-1; i>=0; i--)
+    {
+        if(v[i]==1 && first_one_found==false)
+        {
+            v[i]=0;
+            cnt0++;
+            first_one_found=true;
+        }
+        else if(v[i]==0)
+        {
+            cnt0++;
+        }
+        else if(v[i]==1) ans+=cnt0;
+    }
+ 
+    //cout<<ans<<"\n";
+ 
+    bool first_zero_found=false;
+    for(int i=0; i<n; i++)
+    {
+        if(v1[i]==0 && first_zero_found==false)
+        {
+            v1[i]=1;
+            pos=i;
+            first_zero_found=true;
+            break;
+        }
+    }
+    //for(auto it:v1) cout<<it<<" ";
+    //cout<<"\n\n";
+    cnt0=0;
+    ll sum=0;
+    // cout<<"pos = "<<pos<<"\n";
+    if(pos!=-1)
+        for(int i=n-1; i>=0; i--)
+        {
+            if(v1[i]==0) cnt0++;
+            else if(v1[i]==1) sum+=cnt0;
+            // cout<<"i = "<<i<<"  cnt0 = "<<cnt0<<"   sum = "<<sum<<"\n";
+        }
+    // cout<<sum;
+    ll x=max(sum,ans);
+    cout<<max(x,initial_inversion);
+ 
+ 
+}
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
