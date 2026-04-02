@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const long long mod=1e9+7;
+
+void solve()
+{
+    int n,m,h;
+    cin>>n>>m>>h;
+ 
+    vector<int>v(n+1);
+    for(int i=1; i<=n; i++) cin>>v[i];
+ 
+    vector<int>vv=v;
+ 
+    vector<int>ind;
+ 
+    while(m--)
+    {
+        int b,c;
+        cin>>b>>c;
+ 
+        int x=v[b]+c;
+        //cout<<"x = "<<x<<"\n";
+        if(x>h)
+        {
+            //cout<<"---\n";
+            //v=vv;
+ 
+            for(auto it:ind) v[it]=vv[it];
+            ind.clear();
+ 
+        }
+        else // v[b]=x;
+        {
+            ind.push_back(b);
+            v[b]=x;
+        }
+        // for(auto it:v) cout<<it<<" ";
+        // cout<<"\n\n";
+ 
+    }
+ 
+    for(int i=1; i<=n; i++) cout<<v[i]<<" ";
+    cout<<"\n";
+ 
+}
+ 
+ 
+ 
+ 
+int main()
+{
+    // root();
+    int t;
+    cin >> t;
+    // t=1;
+    while (t--)
+    {
+        solve();
+        // cout<<((ans)?"YES":"NO");
+        cout<<"\n";
+    }
+}
