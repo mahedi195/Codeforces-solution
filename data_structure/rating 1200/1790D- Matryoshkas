@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    //set<int>s;
+    map<int,int>mp;
+    for(int i=0; i<n; i++) cin>>v[i], mp[v[i]]++;
+ 
+        //set<int>s;
+        int ans=0;
+        for(auto element:mp)
+        {
+            int start=element.first;
+ 
+            //if(mp[element]==0) continue;
+ 
+            while(mp[start]>0)
+            {
+                int x=start;
+                //cout<<"x = "<<x<<"\n";
+                while(mp[x]>0)
+                {
+                    mp[x]--;
+                    x++;
+                }
+                ans++;
+                //cout<<"ans = "<<ans<<"\n\n";
+            }
+        }
+        cout<<ans;
+ 
+ 
+ 
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
