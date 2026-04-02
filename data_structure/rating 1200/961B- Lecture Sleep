@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+ 
+ 
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+ 
+void mahedi_solve_this_prb()
+{
+    int n,k;
+    cin>>n>>k;
+ 
+    vector<int>algo(n);
+    for(int i=0; i<n; i++) cin>>algo[i];
+ 
+    vector<int>time(n);
+    vector<ll>timePre(n+1,0);
+    for(int i=0; i<n; i++)
+    {
+        cin>>time[i];
+        if(time[i]==0)
+            timePre[i+1]=timePre[i]+algo[i];
+        else timePre[i+1]=timePre[i];
+    }
+ 
+    // for(auto it:timePre) cout<<it<<" ";
+    // cout<<"\n";
+ 
+ 
+ 
+ 
+    ll sum=0;
+    ll mx=0;
+ 
+    for(int i=0; i<n; i++)
+    {
+        if(time[i]==1) sum+=(ll)algo[i];
+        else
+        {
+            // if(i+k<n)
+            mx=max(mx,timePre[min(n,i+k)]-timePre[i]);
+ 
+        }
+        // cout<<"mx = "<<mx<<"\n";
+    }
+    // cout<<"sum = "<<sum<<"\n";
+    cout<<sum+mx;
+ 
+}
+ 
+ 
+ 
+ 
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    // cin >> t;
+    t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        // cout<<((ans)?"YES":"NO");
+        cout<<"\n";
+        //cout<<"\n\n";
+    }
+}
