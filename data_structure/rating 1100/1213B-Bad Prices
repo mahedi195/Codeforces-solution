@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+ 
+//safe unordered_map to collision free
+//codeforces blog--> Blowing up unordered_map, and how to stop getting hacked on it
+struct custom_hash //codeforces blog--> Blowing up unordered_map, and how to stop getting hacked on it
+{
+    static uint64_t splitmix64(uint64_t x)
+    {
+ 
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+ 
+    size_t operator()(uint64_t x) const
+    {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+    int minimum=INT_MAX;
+ 
+    vector<int>v2(n);
+    //v2[n-1]=v[n-1];
+    //minimum=v[n-1];
+    for(int i=n-1; i>=0; i--)
+    {
+        minimum=min(minimum,v[i]);
+        v2[i]=minimum;
+    }
+ 
+    int cnt=0;
+    for(int i=0; i<n; i++)
+    {
+        if(v[i]>v2[i]) cnt++;
+    }
+    cout<<cnt;
+}
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
