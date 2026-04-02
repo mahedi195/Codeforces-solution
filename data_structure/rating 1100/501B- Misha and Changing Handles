@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    map<string,string>old_new,new_old;
+    //set<string>st;
+ 
+    while(n--)
+    {
+       // cout<<" ---\n";
+        string old_string,new_string;
+        cin>>old_string>>new_string;
+ 
+        if(new_old.count(old_string)==1)
+        {
+            string s=new_old[old_string];
+            old_new[s]=new_string;
+            new_old[new_string]=s;
+ 
+        }
+        else
+        {
+            old_new[old_string]=new_string;
+            new_old[new_string]=old_string;
+        }
+    }
+ 
+    cout<<old_new.size()<<"\n";
+    for(auto it:old_new) cout<<it.first<<" "<<it.second<<"\n";
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
