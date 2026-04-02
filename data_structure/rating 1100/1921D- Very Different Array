@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+ 
+//safe unordered_map to collision free
+//codeforces blog--> Blowing up unordered_map, and how to stop getting hacked on it
+//if we get TLE after using unorder map , then we can use it
+struct custom_hash //codeforces blog--> Blowing up unordered_map, and how to stop getting hacked on it
+{
+    static uint64_t splitmix64(uint64_t x)
+    {
+ 
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+ 
+    size_t operator()(uint64_t x) const
+    {
+        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x + FIXED_RANDOM);
+    }
+};
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n,m; cin>>n>>m;
+    vector<int>a(n),b(m);
+    for(int i=0;i<n;i++) cin>>a[i];
+    for(int i=0;i<m;i++) cin>>b[i];
+    sort(a.begin(),a.end());
+    sort(b.rbegin(),b.rend());
+    ll sum=0,mx=0;
+    for(int i=0;i<n;i++) sum+=abs(a[i]-b[i]);
+    mx=sum;
+    for(int i=n-1,j=m-1;i>=0;i--,j--)
+    {
+        sum-=abs(a[i]-b[i]);
+        sum+=abs(a[i]-b[j]);
+        mx=max(mx,sum);
+    }
+    cout<<mx;
+}
+ 
+int main()
+{
+    go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
