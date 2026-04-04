@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+const double pi = 3.14159265358979323846;
+//cout<<fixed<<setprecision(6)<<ans;
+#define oneMillion 1000000
+
+void mahedi_solve_this_prb()
+{
+    string s;
+    cin>>s;
+    stack<char>st;
+
+    st.push(s[0]);
+    int i=1;
+    int turn=0;
+    int n=s.size();
+    while(i<n)
+    {
+        if(st.size()==0)
+        {
+            st.push(s[i]);
+            i++;
+            continue;
+        }
+        if(s[i]!=st.top())
+        {
+            st.push(s[i]);
+        }
+        else
+        {
+            st.pop();
+            turn++;
+        }
+        i++;
+    }
+
+    if(turn%2==0) cout<<"No";
+    else cout<<"Yes";
+}
+
+
+
+
+int main()
+{
+    // go_mahedi_go;
+
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
