@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+const double pi = 3.14159265358979323846;
+//cout<<fixed<<setprecision(6)<<ans;
+#define oneMillion 1000000
+
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+    
+    vector<ll>prefixsum(n),suffixsum(n);
+    
+    prefixsum[0]=v[0];
+    for(int i=1; i<n; i++) prefixsum[i]=prefixsum[i-1]+v[i];
+    
+    suffixsum[n-1]=v[n-1];
+    for(int i=n-2; i>=0; i--) suffixsum[i]=suffixsum[i+1]+v[i];
+    
+    //for(auto it:prefixsum) cout<<it<<" ";
+    //cout<<"\n";
+    //for(auto it:suffixsum) cout<<it<<" ";
+    // cout<<"\n";
+
+    int ans=0;
+    for(int i=0; i<n-1; i++)
+    {
+        if(prefixsum[i]==suffixsum[i+1]) ans++;
+    }
+    cout<<ans;
+}
+
+
+
+
+int main()
+{
+    // go_mahedi_go;
+
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
