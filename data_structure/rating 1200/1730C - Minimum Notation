@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+const double pi = 3.14159265358979323846;
+//cout<<fixed<<setprecision(6)<<ans;
+#define oneMillion 1000000
+
+
+void mahedi_solve_this_prb()
+{
+    string s;
+    cin>>s;
+    string suffixmin=s;
+    int n=s.size();
+    suffixmin[n-1]=s[n-1];
+    for(int i=n-2; i>=0; i--)
+        suffixmin[i]=min(s[i],suffixmin[i+1]);
+    string ans(n,' ');
+    for(int i=0; i<n; i++)
+    {
+        if(s[i]==suffixmin[i]) ans[i]=s[i];
+        else
+        {
+            ans[i]=min(char(s[i]+1),'9');
+        }
+    }
+    sort(ans.begin(),ans.end());
+    cout<<ans;
+
+}
+
+
+
+int main()
+{
+    // go_mahedi_go;
+
+    int t;
+    cin >> t;
+    // t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
