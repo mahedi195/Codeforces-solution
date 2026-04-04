@@ -7,7 +7,6 @@ const double pi = 3.14159265358979323846;
 //cout<<fixed<<setprecision(6)<<ans;
 #define oneMillion 1000000
 
-
 void mahedi_solve_this_prb()
 {
     string s;
