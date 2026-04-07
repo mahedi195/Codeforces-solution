@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+const double pi = 3.14159265358979323846;
+//cout<<fixed<<setprecision(6)<<ans;
+#define oneMillion 1000000
+
+
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    map<string,int>depth;
+    depth["polycarp"]=1;
+    while(n--)
+    {
+        string s1,s2,s3;
+        cin>>s1>>s2>>s3;
+
+        transform(s1.begin(),s1.end(), s1.begin(),::tolower);
+        transform(s3.begin(),s3.end(), s3.begin(),::tolower);
+
+        depth[s1]=depth[s3]+1;
+
+    }
+
+    int ans=0;
+    for(auto it:depth) ans=max(ans,it.second);
+
+    cout<<ans;
+}
+
+
+int main()
+{
+    // go_mahedi_go;
+
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
