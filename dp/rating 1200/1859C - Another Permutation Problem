@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+const double pi = 3.14159265358979323846;
+//cout<<fixed<<setprecision(6)<<ans;
+#define oneMillion 1000000
+
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>permu(n+1);
+    for(int i=1; i<=n; i++) permu[i]=i;
+
+    //for(int i=1; i<=n; i++) cout<<permu[i]<<" ";
+    // cout<<"\n\n";
+
+    int i=1;
+    ll summation=0;
+    while(i<=n)
+    {
+        ll sum=0;
+        int reverse_start=n-i+1;
+        int j=reverse_start;
+
+        for(int val=n; j<=n; j++,val--) permu[j]=val;
+
+        // for(int i=1; i<=n; i++) cout<<permu[i]<<" ";
+        //cout<<"\n";
+
+        ll max_val=0;
+        for(int i=1; i<=n; i++)
+        {
+            ll x=permu[i]*i;
+            max_val=max(max_val,x);
+
+            sum+=x;
+        }
+        sum-=max_val;
+        summation=max(summation,sum);
+
+        i++;
+    }
+    cout<<summation;
+
+
+}
+
+
+int main()
+{
+    // go_mahedi_go;
+
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
