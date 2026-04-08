@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+ 
+    int n;
+    cin>>n;
+    vector<ll>v(n);
+    //unordered_map<ll,ll>fre;
+    //map<ll,ll>fre;
+    for(int i=0; i<n; i++)
+    {
+        cin>>v[i];
+        //fre[v[i]]++;
+ 
+    }
+    ll sum=accumulate(v.begin(),v.end(),0LL);
+ 
+ 
+    ll targetSum=2*sum/n;
+ 
+    if((2*sum)%n!=0)
+    {
+        cout<<0;
+        return;
+    }
+ 
+    //unordered_map<ll,ll,custom_hash>fre;
+    map<ll,ll>fre;
+ 
+    ll cnt=0;
+ 
+    for(int i=0; i<n; i++)
+    {
+        ll remain=targetSum-v[i];
+        cnt=cnt+fre[remain];
+        //if(remain==v[i]) cnt=cnt-1;
+ 
+        fre[v[i]]++;
+    }
+    cout<<cnt;
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    // t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
