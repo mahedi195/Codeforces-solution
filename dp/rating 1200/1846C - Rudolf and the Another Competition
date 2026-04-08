@@ -1,0 +1,89 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+ 
+    int n,m,h;
+    cin>>n>>m>>h;
+    //++n;
+    vector<pair<int,ll>>res(n);
+ 
+ 
+    for(int j=0; j<n; j++)
+        //while(n--)
+    {
+        vector<int>v(m);
+        for(int i=0; i<m; i++) cin>>v[i];
+ 
+        if(n==1)
+        {
+            cout<<1;
+            return;
+        }
+ 
+        sort(v.begin(),v.end());
+ 
+        vector<ll>v1;
+        ll sum=0;
+        for(int i=0; i<m; i++)
+        {
+            sum+=(ll)v[i];
+            // cout<<"sum = "<<sum<<" h = "<<h<<"\n";
+            if(sum>(ll)h) break;
+            v1.push_back(sum);
+        }
+        // cout<<"prefix sum : ";
+        // for(auto it:v1) cout<<it<<" ";
+        // cout<<"\n\n";
+ 
+        ll x=0;
+        for(int i=0; i<v1.size(); i++)
+        {
+            x+=v1[i];
+ 
+        }
+        // cout<<"x = "<<x<<"\n";
+        res[j].first=v1.size();
+        res[j].second=x;
+ 
+    }
+ 
+    //cout<<"\n\n---\n";
+    //for(auto it:res) cout<<it.first<<" --> "<<it.second<<"\n";
+    //cout<<"\n\n";
+ 
+    //sort(res.rbegin(),res.rend());
+    //cout<<"\n===========\n";
+    //for(auto it:res) cout<<it.first<<" --> "<<it.second<<"\n";
+    //cout<<"\n\n";
+ 
+    int cnt=0;
+ 
+    for(int i=1; i<n; i++)
+    {
+        if(res[0].first<res[i].first) cnt++;
+        else if(res[0].first==res[i].first)
+        {
+            if(res[0].second>res[i].second) cnt++;
+        }
+    }
+    cout<<++cnt;
+}
+ 
+ 
+int main()
+{
+    //  go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
