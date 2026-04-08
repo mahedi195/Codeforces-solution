@@ -1,0 +1,121 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const long long mod=1e9+7;
+///maximum_element_of_vector=*max_element(v.begin(),v.end()) 0(n)
+///minimum_element_of_vector=*min_element(v.begin(),v.end())
+///sort(v.begin(),v.end() o(n log n) asending
+///sort(v.begin(), v.end(), greater<int>()); descending
+ 
+ 
+///     vector pair
+ 
+//vector<pair<int,int>>v(n);
+//sort(v.begin(),v.end());  first elements sort , ascending order
+//sort(v.begin(), v.end(), [](auto &a, auto &b){ return a.second < b.second; });  second elements sort - ascending order
+ 
+///
+//v.resize(n+1)
+//v.assign(n+1,0)
+//  accumulate(a.begin(),a.end(),0ll)  full vector sum
+/*
+ 
+18
+1 2 3 4 5 5 5 5 5 9 8 7 4 3 2 2 2 2
+ 
+ 
+*/
+ 
+ 
+ 
+ 
+//    ----------------------- bitmask-------------------------------------
+//int min_value_index_of_array_elements = min_element(a.begin(), a.end()) - a.begin();
+//int max_value_index=max_element(a.begin(), a.end()) - a.begin();
+// int max_value_index=max_element(a,a+n) - a; array is not vector , normal array
+ 
+//int int lsb_0_based = __builtin_ffs(n) - 1; least significant bit position 0 based
+//int msb_0_based = 31 - __builtin_clz(n);        // for int
+//int msb_0_based_ll = 63 - __builtin_clzll(n);  // for long long
+ 
+ 
+ 
+//-------------------------------vector-------------------------------
+ 
+// two vector merge
+//vector<int> v1 = {1, 5, 3, 7};  vector<int> v2 = {5, 2, 6, 2};
+//create new vector and store v1 vector---->> vector<int> merged = v1;
+//Append elements of v2     merged.insert(merged.end(), v2.begin(), v2.end());
+ 
+ 
+ 
+//-------------------vector sort, unique, erase --------------------------
+//vector<int> v = {4, 2, 2, 5, 1, 4}; sort(v.begin(), v.end());
+//v.erase(unique(v.begin(), v.end()), v.end());
+ 
+//---------------------------unordered map---------------------------
+//unordered map  unordered_map<string,int>fre;  fre1quency --> for(string &x:a) fre[x]++;
+//unorderd map  for(string &x:a) { if(fre[x]==1) c1+=3; else if(fre[x]==2) c1+=1;}
+ 
+//  int x=stoi(s)  // s->string, string to int
+//ll x=stoll(s)     //s string , string to long long
+ 
+ 
+ 
+ 
+void solve()
+{
+    string  n;
+    cin>>n;
+ 
+    int cnt2=0,cnt3=0;
+ 
+    int sum=0;
+    for(int i=0; i<n.size(); i++)
+    {
+        int x=n[i]-'0';
+        if(x==2) cnt2++;
+        else if(x==3) cnt3++;
+        sum+=x;
+ 
+    }
+    //cout<<cnt2<<"  --- "<<cnt3<<"\n";
+ 
+    bool ans=false;
+    for(int i=0; i<=cnt2; i++) //2
+    {
+        for(int j=0; j<=cnt3; j++)//3
+        {
+            int newSum=sum+2*i+6*j;
+            if(newSum%9==0)
+            {
+                //ans=true;
+                cout<<"YES";
+                return;
+                // break;
+            }
+        }
+        // if(ans==true) break;
+    }
+    cout<<"NO";
+ 
+ 
+ 
+ 
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    int t;
+    cin >> t;
+    // t=1;
+    while (t--)
+    {
+        solve();
+        // cout<<((ans)?"YES":"NO");
+        cout<<"\n\n";
+    }
+}
