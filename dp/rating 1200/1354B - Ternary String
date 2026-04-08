@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7; 
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+    string s;
+    cin>>s;
+    int n=s.size();
+ 
+    map<char,int>cnt;
+ 
+    int l=0;
+    int len=INT_MAX;
+    
+    for(int r=0;r<n;r++)
+    {
+        cnt[s[r]]++;
+ 
+        while(cnt['1']>0 && cnt['2']>0 && cnt['3']>0)
+        {
+            len=min(len,r-l+1);
+            cnt[s[l]]--;
+ 
+            l++;
+ 
+        }
+ 
+    }
+    if(len==INT_MAX) cout<<0;
+    else cout<<len;
+ 
+ 
+}
+ 
+int main()
+{
+    go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
