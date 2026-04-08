@@ -2,7 +2,7 @@
 using namespace std;
 typedef long long int ll;
 #define mod 1e9+7;
-  
+   
 #define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
 
 void mahedi_solve_this_prb()
