@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const long long mod=1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+    ll res=v[n-1];
+    for(int i=n-2; i>=0; i--)
+        res=max((ll)v[i],res+1);
+    cout<<res;
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
