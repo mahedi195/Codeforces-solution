@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    //vector<int>a(3);
+    //cin>>a[0]>>a[1]>>a[2];
+    //cin>>roc
+    int rock,paper,scissor;
+    cin>>rock>>paper>>scissor;
+    string bobInput;
+    cin>>bobInput;
+ 
+    vector<char>ans(n,'?');
+    int win=0;
+    for(int i=0; i<n; i++)
+    {
+        if(bobInput[i]=='S' && rock>0)
+        {
+            ans[i]= 'R';
+            rock--;
+            win++;
+        }
+        else if(bobInput[i]=='R' && paper>0)
+        {
+            ans[i]='P';
+            paper--;
+            win++;
+        }
+        else if(bobInput[i]=='P' && scissor>0)
+        {
+            ans[i]='S';
+            scissor--;
+            win++;
+        }
+    }
+ 
+    if(win<(n+1)/2)
+    {
+        cout<<"NO";
+        //continue;
+        return;
+ 
+    }
+ 
+    // cout<<"YES\n";
+    for(int i=0; i<n; i++)
+    {
+        if(ans[i]=='?')
+        {
+            if(rock>0) ans[i]='R',rock--;
+            else if(paper>0) ans[i]='P',paper--;
+            else if(scissor>0) ans[i]='S',scissor--;
+ 
+        }
+    }
+ 
+    cout<<"YES\n";
+    for(auto it:ans) cout<<it;
+
+}
+
+int main()
+{
+    go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
