@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+    int n,l,r;
+    cin>>n>>l>>r;
+    vector<int>v(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+    int sum=0,cnt=0;
+    int left=0;
+    for(int i=0; i<n; i++)
+    {
+        sum+=v[i];
+        while(sum>r && left<=i)
+        {
+            sum-=v[left];
+            left++;
+        }
+ 
+        if(l<=sum && sum<=r)
+        {
+            cnt++;
+            sum=0;
+            left=i+1;
+        }
+    }
+    cout<<cnt;
+ 
+}
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
