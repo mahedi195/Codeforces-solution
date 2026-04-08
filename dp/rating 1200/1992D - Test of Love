@@ -1,0 +1,111 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const long long mod=1e9+7;
+
+void solve()
+{
+    int n,m,k;
+    cin>>n>>m>>k;
+    string s;
+    cin>>s;
+ 
+    int position=-1;
+    int swim=0;
+ 
+    int q=0;
+    while(position<n)
+    {
+ 
+        //cout<<"po = "<<position<<"\n";
+ 
+        bool surface=(position==-1 || (position>=0 && position<n && s[position]=='L'));
+        if(surface)
+        {
+            bool nextPositionIsWaster=false;
+            int previousPosition=position;
+            bool jump=false;
+ 
+            for(int i=m; i>=1; i--)
+            {
+                int nextPosition=position+i;
+                //cout<<"next = "<<nextPosition<<"\n";
+                if(nextPosition>=n)
+                {
+                    cout<<"YES";
+                    return;
+                }
+ 
+ 
+                if(s[nextPosition]!='C')
+                {
+                    jump=true;
+                    nextPositionIsWaster=true;
+                    position=nextPosition;
+                    break;
+                }
+            }
+ 
+            if(nextPositionIsWaster)
+            {
+                for(int i=position-1; i>previousPosition&& i>=0 ; i--)
+                {
+                    if(s[i]=='L')
+                    {
+                        position=i;
+                        break;
+                    }
+                }
+            }
+            if(!jump)
+            {
+                cout<<"NO";
+                return;
+            }
+
+        }
+ 
+        else if(s[position]=='W')
+        {
+            //cout<<"positionnnn = "<<position<<"\n";
+            int nextpos=position+1;
+            if(s[nextpos]=='C')
+            {
+                cout<<"NO";
+                return;
+            }
+            swim++;
+            if(swim>k)
+            {
+                cout<<"NO";
+                return;
+            }
+            position=nextpos;
+ 
+        }
+        else if(s[position]=='C')
+        {
+            int nextPos=position+1;
+            if(s[nextPos]=='C')
+            {
+                cout<<"NO";
+                return;
+            }
+        }
+ 
+ 
+    }
+    cout<<"YES";
+ 
+}
+ 
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+        cout<<"\n";
+    }
+}
