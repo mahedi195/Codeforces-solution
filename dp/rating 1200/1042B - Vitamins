@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+ 
+void mahedi_solve_this_prb()
+{
+ 
+    int n;
+    cin>>n;
+    map<string,int>mp;
+ 
+    while(n--)
+    {
+        int price;
+        string vitamin;
+        cin>>price>>vitamin;
+ 
+        sort(vitamin.begin(),vitamin.end());
+ 
+        if(mp.count(vitamin)==0)
+            mp[vitamin]=price;
+        else mp[vitamin]=min(mp[vitamin],price);
+ 
+    }
+ 
+    //for(auto it:mp) cout<<it<<"\n";
+ 
+ 
+    int ans=INT_MAX;
+ 
+    if(mp.count("A") && mp.count("B") && mp.count("C"))
+        ans=min(ans,mp["A"]+mp["B"]+mp["C"]);
+    if(mp.count("A") && mp.count("BC"))
+        ans=min(ans,mp["A"]+mp["BC"]);
+    if(mp.count("B") && mp.count("AC"))
+        ans=min(ans,mp["B"]+mp["AC"]);
+    if(mp.count("C") && mp.count("AB"))
+        ans=min(ans,mp["C"]+mp["AB"]);
+    if(mp.count("AB") && mp.count("AC"))
+        ans=min(ans,mp["AB"]+mp["AC"]);
+    if(mp.count("AB") && mp.count("BC"))
+        ans=min(ans,mp["AB"]+mp["BC"]);
+    if(mp.count("AC") && mp.count("BC"))
+        ans=min(ans,mp["AC"]+mp["BC"]);
+    if(mp.count("ABC"))
+        ans=min(ans,mp["ABC"]);
+    if(ans==INT_MAX) ans=-1;
+    cout<<ans;
+ 
+}
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
