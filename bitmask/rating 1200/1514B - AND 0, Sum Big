@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+
+
+ll binary_expo(ll base, ll power)
+{
+    ll result=1;
+    while(power)
+    {
+        if(power%2!=0)
+        {
+            result=(result*base)%mod;
+            power--;
+        }
+        else
+        {
+            base=(base*base)%mod;
+            power=power/2;
+        }
+    }
+
+    return result%mod;
+
+}
+
+
+void mahedi_solve_this_prb()
+{
+    ll n,k; cin>>n>>k;
+    cout<<binary_expo(n,k);
+
+
+}
+
+
+
+int main()
+{
+    // go_mahedi_go;
+
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        //cout<<"\n\n";
+    }
+}
