@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+ 
+    vector<ll>prefixSum(n);
+    prefixSum[0]=v[0];
+    for(int i=1;i<n;i++) prefixSum[i]=abs(v[i])+prefixSum[i-1];
+ 
+    vector<ll>negativeSum_fromRight(n);
+    negativeSum_fromRight[n-1]=-v[n-1];
+    for(int i=n-2;i>=0;i--) negativeSum_fromRight[i]=negativeSum_fromRight[i+1]-v[i];
+ 
+    ll res=negativeSum_fromRight[1];
+    ll ans=0;
+    for(int i=1;i<n-1;i++)
+    {
+        ans=prefixSum[i-1]+negativeSum_fromRight[i+1];
+        res=max(res,ans);
+ 
+    }
+ 
+    ans=prefixSum[n-2];
+    res=max(res,ans);
+ 
+    cout<<res;
+ 
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    // go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n\n";
+    }
+}
