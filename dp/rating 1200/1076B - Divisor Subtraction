@@ -1,0 +1,96 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+ 
+bool isprime(ll n)
+{
+    if(n<=3) return true;
+    else if (n%2==0) return false;
+ 
+    for(ll i=3; i*i<=n; i+=2)
+    {
+        if(n%i==0) return false;
+    }
+    return true;
+ 
+}
+ 
+ 
+ 
+ 
+void mahedi_solve_this_prb()
+{
+ 
+    ll n;
+    cin>>n;
+ 
+    if(n%2==0)
+    {
+        cout<<n/2;
+        return;
+    }
+    ll cnt=0;
+    while(n>=0)
+    {
+        //   cout<<"n = "<<n<<"\n";
+        if(n==0)
+        {
+            cout<<cnt;
+            return;
+        }
+        if(isprime(n))
+        {
+            cnt++;
+            cout<<cnt;
+            return;
+        }
+        else
+        {
+            if(n%2==0)
+            {
+                ll times=n/2;
+                n-=2*times;
+                cnt+=times;
+                // cout<<" ---\n";
+            }
+            else
+            {
+                for(int i=3; i<=n*n; i++)
+                {
+                    if(n%i==0)
+                    {
+                        // cout<<"n = "<<n<<" ";
+                        //  cout<<"i = "<<i<<" ";
+                        n-=i;
+                        //cout<<"n = "<<n<<"\n";
+                        cnt++;
+                        break;
+                    }
+                }
+                //  cnt++;
+            }
+        }
+    }
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n\n";
+    }
+}
