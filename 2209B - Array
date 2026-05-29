@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>a(n);
+    for(int i=0; i<n; i++) cin>>a[i];
+ 
+    for(int i=0; i<n; i++)
+    {
+        int aiGreater=0,ajGreater=0;
+        for(int j=i+1; j<n; j++)
+        {
+            if(a[i]>a[j]) aiGreater++;
+            else if(a[i]<a[j]) ajGreater++;
+        }
+        cout<<max(aiGreater,ajGreater)<<" ";
+    }
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n\n";
+    }
+}
