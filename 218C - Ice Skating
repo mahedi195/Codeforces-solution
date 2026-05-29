@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+const int N=101;
+int n;
+bool visited[N];
+int x[N],y[N];
+ 
+void dfs(int i)
+{
+    visited[i]=true;
+    for(int j=0; j<n; j++)
+    {
+        if(visited[j]==false && (x[i]==x[j] || y[i]==y[j]))
+                dfs(j);
+ 
+    }
+ 
+}
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    cin>>n;
+    for(int i=0; i<n; i++) cin>>x[i]>>y[i];
+ 
+    int groups=0;
+    for(int i=0; i<n; i++)
+    {
+        if(visited[i]==false)
+        {
+            dfs(i);
+            groups++;
+ 
+        }
+    }
+ 
+    cout<<groups-1;
+}
+ 
+ 
+int main()
+{
+    int t;
+    //cin>>t;
+    t=1;
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n";
+ 
+    }
+}
