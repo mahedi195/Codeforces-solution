@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    bool married_boy[n+1]= {false};
+ 
+    vector<int>not_married_girl;
+ 
+    //while(n--)
+    for(int i=1; i<=n; i++)
+    {
+        int k;
+        cin>>k;
+        bool already_married_girl=false;
+        while(k--)
+        {
+            int x;
+            cin>>x;
+            if(!already_married_girl && !married_boy[x] )
+            {
+                married_boy[x]=true;
+                already_married_girl=true;
+            }
+ 
+        }
+ 
+        if(!already_married_girl) not_married_girl.push_back(i);
+    }
+ 
+    // for(auto it:not_married_girl) cout<<it<<" ";
+    //cout<<"\n..\n";
+ 
+    if(not_married_girl.size()>0)
+    {
+        for(int i=1; i<=n; i++)
+        {
+            if(married_boy[i]==false)
+            {
+                cout<<"IMPROVE\n";
+                cout<<not_married_girl[0]<<" "<<i<<"\n";
+                return;
+            }
+        }
+    }
+ 
+    cout<<"OPTIMAL\n";
+ 
+}
+ 
+ 
+int main()
+{
+    int t;
+    cin>>t;
+    //t=1;
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n";
+ 
+    }
+}
