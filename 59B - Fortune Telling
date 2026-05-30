@@ -1,0 +1,89 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>odd,even;
+    for(int i=0; i<n; i++)
+    {
+        int x;
+        cin>>x;
+        if(x%2==0) even.push_back(x);
+        else odd.push_back(x);
+    }
+ 
+    sort(odd.begin(),odd.end());
+    sort(even.begin(),even.end());
+ 
+    int i=odd.size()-1,j=even.size()-1;
+ 
+    ll ans=0;
+    ll x;
+    while(i>=0 && j>=0)
+    {
+        // ll x;
+        x=odd[i]+even[j];
+        //cout<<"x = "<<x<<"\n";
+        //ans+=odd[i];
+        //ans+=even[j];
+        ans+=x;
+        i--,j--;
+ 
+    }
+    //cout<<"ans == "<<ans<<"\n i = "<<i<<" j = "<<j<<"\n";
+ 
+    if(ans%2==0 && odd.size()>0 && even.size()>0)
+    {
+        ans-=x;
+        i++,j++;
+    }
+ 
+    // cout<<"i = "<<i<<"  j = "<<j<<"  ";
+    // cout<<"ans = "<<ans<<"\n\n";
+ 
+    if(ans%2==1 && j>=0 && odd.size()>0 && even.size()>0 )
+    {
+        while(j>=0)
+        {
+            ans+=even[j];
+            j--;
+        }
+    }
+ 
+    if(i>=0)
+    {
+        while(i>=0)
+        {
+            ans+=odd[i];
+            i--;
+        }
+        if(ans%2==0) ans-=odd[i+1];
+    }
+ 
+    cout<<ans;
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n\n";
+    }
+}
