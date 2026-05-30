@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n,m; cin>>n>>m;
+    string x;
+    unordered_set<string>s;
+ 
+    for(int i=0;i<n;i++)
+    {
+        cin>>x;
+        s.insert(x);
+    }
+    int common=0;
+    for(int i=0;i<m;i++)
+    {
+        cin>>x;
+        if(s.count(x)==1) common++;
+    }
+    //cout<<common<<"\n";
+    int poland=n-common+ (common+1)/2;
+    int enemy =m-common+(common/2);
+    //cout<<poland<<" "<<enemy<<"\n";
+    cout<<(poland>enemy ? "YES":"NO");
+ 
+}
+ 
+ 
+int main()
+{
+    go_mahedi_go;
+ 
+    int t;
+    //cin >> t;
+    t=1;
+    while (t--)
+    {
+        //solveE();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
