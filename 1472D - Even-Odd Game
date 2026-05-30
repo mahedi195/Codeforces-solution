@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+    int n; cin>>n;
+    vector<int>v(n);
+    for(int i=0;i<n;i++) cin>>v[i];
+ 
+    sort(v.begin(),v.end());
+ 
+    ll aliceScore=0,bobScore=0;
+    int x=1;
+    for(int i=n-1;i>=0;i--)
+    {
+        if(x%2==1)
+        {
+            if(v[i]%2==0) aliceScore+=v[i];
+ 
+        }
+        else if(x%2==0)
+        {
+            if(v[i]%2==1) bobScore+=v[i];
+        }
+ 
+        x++;
+    }
+ 
+    if(aliceScore==bobScore) cout<<"Tie";
+    else cout<<((aliceScore>bobScore)?"Alice":"Bob");
+}
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
