@@ -1,0 +1,66 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+ 
+void mahedi_solve_this_prb()
+{
+    int n,k;
+    cin>>n>>k;
+    map<int,vector<int>>map_plank_color;
+    vector<int>planks_color(n+1);
+    for(int i=1; i<=n; i++)
+    {
+             cin>>planks_color[i];
+             map_plank_color[planks_color[i]].push_back(i);
+    }
+ 
+    int ans=INT_MAX;
+ 
+    for(auto it:map_plank_color)
+    {
+ 
+        vector<int>&position_each_plank_color=it.second;
+ 
+        vector<int>gap;
+        if(position_each_plank_color.size()>0) gap.push_back(position_each_plank_color[0]-1);
+        if(position_each_plank_color.size()>1)
+        {
+            for(int i=1; i<position_each_plank_color.size(); i++)
+             gap.push_back(max(0,position_each_plank_color[i]-position_each_plank_color[i-1]-1));
+        }
+        if(position_each_plank_color.size()>0) gap.push_back(n-position_each_plank_color.back());
+ 
+        int mx1=0,mx2=0;
+        sort(gap.begin(),gap.end());
+ 
+ 
+        if(gap.size()>0) mx1=gap[gap.size()-1];
+        if(gap.size()>1) mx2=gap[gap.size()-2];
+        int maxi=max(mx1/2,mx2);
+        ans=min(ans,maxi);
+ 
+        position_each_plank_color.clear();
+ 
+    }
+    cout<<ans;
+}
+ 
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n";
+    }
+}
