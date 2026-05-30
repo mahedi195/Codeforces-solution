@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const long long mod=1e9+7;
+ 
+const int MAXN=2e5+5;
+int prefixA[MAXN][26];
+int prefixB[MAXN][26];
+ 
+void solve()
+{
+    int n,q;
+    cin>>n>>q;
+    string a,b;
+    cin>>a>>b;
+ 
+    for(int i=0; i<n; i++)
+    {
+        for(int j=0; j<26; j++)
+        {
+            prefixA[i+1][j]=prefixA[i][j];
+            prefixB[i+1][j]=prefixB[i][j];
+        }
+ 
+        int ch=a[i]-'a';
+        prefixA[i+1][ch]++;
+        ch=b[i]-'a';
+        prefixB[i+1][ch]++;
+    }
+
+    while(q--)
+    {
+        int l,r;
+        cin>>l>>r;
+ 
+        int ans=0;
+        for(int i=0; i<26; i++)
+        {
+            int x=prefixA[r][i]-prefixA[l-1][i];
+            int y=prefixB[r][i]-prefixB[l-1][i];
+            if(x>y) ans+=(x-y);
+        }
+        cout<<ans<<"\n";
+ 
+    }
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        solve();
+        cout<<"\n";
+    }
+}
