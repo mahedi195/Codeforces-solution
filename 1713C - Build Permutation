@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+#define mod 1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+const double pi = 3.14159265358979323846;
+//cout<<fixed<<setprecision(6)<<ans;
+#define oneMillion 1000000
+
+
+
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>permutation(n);
+    int i=n-1;
+    while(i>=0)
+    {
+        int root=ceil(sqrt(i));
+        int sq=root*root;
+        //cout<<"ro = "<<root<<"  sq= "<<sq<<"  ";
+        int block_start_ind=sq-i;
+        int j=block_start_ind;
+        //cout<<"j = "<<j<<"\n";
+        for( ; j<=i; j++)
+            permutation[j]=sq-j;
+
+        i=block_start_ind-1;
+    }
+
+    for(int i=0; i<n; i++) cout<<permutation[i]<<" ";
+
+
+}
+
+
+
+
+
+
+int main()
+{
+    // go_mahedi_go;
+
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        //solve();
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
