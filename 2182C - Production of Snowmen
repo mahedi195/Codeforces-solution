@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>a(n),b(n),c(n);
+    for(int i=0; i<n; i++) cin>>a[i];
+    for(int i=0; i<n; i++) cin>>b[i];
+    for(int i=0; i<n; i++) cin>>c[i];
+ 
+    ll ab=0;
+    for(int i=0;i<n;i++)
+    {
+        bool ok=true;
+        for(int j=0;j<n;j++)
+        {
+            int partner=(i+j)%n;
+            if(a[j]>=b[partner])
+            {
+                ok=false;
+                break;
+            }
+ 
+        }
+        if(ok) ab++;
+    }
+ 
+ 
+    ll bc=0;
+    for(int i=0;i<n;i++)
+    {
+        bool ok=true;
+        for(int j=0;j<n;j++)
+        {
+            int partner=(i+j)%n;
+            if(b[j]>=c[partner])
+            {
+                ok=false;
+                break;
+            }
+ 
+        }
+        if(ok) bc++;
+    }
+ 
+    cout<<n*ab*bc;
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    // go_mahedi_go;
+ 
+    int t;
+    cin >> t;
+    //t=1;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+        cout<<"\n\n";
+    }
+}
