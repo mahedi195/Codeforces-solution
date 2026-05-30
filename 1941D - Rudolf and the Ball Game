@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const long long mod=1e9+7;
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr);
+
+void mahedi_solve_this_prb()
+{
+    int n,m,x;
+    cin>>n>>m>>x;
+ 
+    set<int>s;
+    s.insert(x);
+ 
+ 
+    while(m--)
+    {
+        int movee;
+        char c;
+        cin>>movee>>c;
+        set<int>ss;
+ 
+        for(auto old_pos:s)
+        {
+            if(c=='0')
+            {
+               int  new_pos= (old_pos-1+movee+n)%n+1;
+               ss.insert(new_pos);
+ 
+            }
+            else if(c=='1')
+            {
+                int new_pos= (old_pos-1-movee+n)%n+1;
+                ss.insert(new_pos);
+            }
+            else
+            {
+                int new_pos= (old_pos-1+movee+n)%n+1;
+                ss.insert(new_pos);
+                 new_pos= (old_pos-1-movee+n)%n+1;
+               ss.insert(new_pos);
+ 
+            }
+        }
+        s=ss;
+ 
+    }
+    cout<<s.size()<<"\n";
+    for(auto it:s) cout<<it<<" ";
+    cout<<"\n\n";
+ 
+}
+  
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+    }
+}
