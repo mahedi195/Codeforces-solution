@@ -1,0 +1,111 @@
+→ SourceCopy
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+int first(vector<int>v,int n)
+{
+    int totalOperation;
+ 
+    if(n%2==1) totalOperation=2*n;
+    else totalOperation=4;
+ 
+    int op=1;
+    while(op<=totalOperation)
+    {
+        if(op%2==1)
+        {
+            for(int i=0; i<2*n; i+=2)
+                swap(v[i],v[i+1]);
+        }
+ 
+        else
+        {
+            for(int i=0,j=n; i<n; i++,j++)
+                swap(v[i],v[j]);
+        }
+ 
+        if(is_sorted(v.begin(),v.end()))
+            return op;
+ 
+        op++;
+    }
+    return -1;
+ 
+}
+ 
+ 
+ 
+ 
+int second(vector<int>v,int n)
+{
+    int totalOperation;
+ 
+    if(n%2==1) totalOperation=2*n;
+    else totalOperation=n;
+ 
+    int op=1;
+    while(op<=totalOperation)
+    {
+        if(op%2==1)
+        {
+            for(int i=0,j=n; i<n; i++,j++)
+                swap(v[i],v[j]);
+        }
+ 
+        else
+        {
+            for(int i=0; i<2*n; i+=2)
+                swap(v[i],v[i+1]);
+        }
+ 
+        if(is_sorted(v.begin(),v.end()))
+            return op;
+ 
+        op++;
+    }
+ 
+    return -1;
+ 
+}
+ 
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(2*n);
+    for(int i=0; i<2*n; i++) cin>>v[i];
+    
+    if(is_sorted(v.begin(),v.end()))
+    {
+        cout<<0;
+        return;
+    }
+ 
+    cout<<min(first(v,n),second(v,n));
+ 
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    int t;
+    //cin>>t;
+    t=1;
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n";
+ 
+    }
+}
+ 
