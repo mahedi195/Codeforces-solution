@@ -1,0 +1,82 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    string s;
+    cin>>s;
+ 
+    int matched=0,unmatched=0;
+    for(int i=0; i<n/2; i++)
+    {
+        if(s[i]==s[n-i-1]) matched++;
+        else unmatched++;
+    }
+ 
+    vector<int>v;
+    // int x=unmatched;
+    // v.push_back(unmatched);
+ 
+    for(int i=0,val=0; i<=matched; i++,val+=2)
+        v.push_back(val);
+    //for(auto it:v) cout<<it<<" ";
+    //cout<<" ==> \n";
+    for(int i=0; i<v.size(); i++)
+    {
+        v[i]+=unmatched;
+    }
+//
+    // for(auto it:v) cout<<it<<" ";
+    //cout<<" ==> \n";
+ 
+ 
+ 
+    if(n%2!=0)
+    {
+        int len=v.size();
+        for(int i=0; i<len; i++)
+        {
+            v.push_back(v[i]+1);
+        }
+    }
+ 
+    // for(auto it:v) cout<<it<<" ";
+    //cout<<"\n";
+    v.push_back(unmatched);
+ 
+    vector<int>ans(n+1,0);
+    for(auto it:v)
+    {
+        //cout<<it<<" -->\n";
+        ans[it]=1;
+    }
+ 
+    for(auto it:ans) cout<<it;
+ 
+ 
+ 
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    int t;
+    cin>>t;
+    //t=1;
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+ 
+    }
+}
