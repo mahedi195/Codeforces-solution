@@ -1,0 +1,78 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    int last_value=(1LL<<n)-1;
+ 
+   // cout<<last_value<<" ---\n";
+ 
+    vector<bool>used(last_value+1,false);
+    vector<int>ans;
+ 
+    for(int exprected_one=n; exprected_one>=0; exprected_one--)
+    {
+        vector<int>v;
+        //cout<<"\n\n";
+        for(int i=0; i<=last_value; i++)
+        {
+            if(used[i]==true)
+                continue;
+ 
+            int val=i;
+            int cnt=0;
+            //cout<<"i = "<<i<<" ";
+            while(((val&1)==1) && val>0)
+            {
+                //cout<<"val = "<<val<<" ";
+                cnt++;
+                val=val>>1;
+ 
+            }
+ 
+            //cout<<"cnt = "<<cnt<<"\n";
+ 
+            if(cnt==exprected_one)
+            {
+                //cout<<"okkkkkkkkkkkkkkkkkkk i ==== "<<i<<"\n";
+                v.push_back(i);
+                used[i]=true;
+ 
+            }
+            //cout<<"v : ";
+            //for(auto it:v) cout<<it<<" ";
+           // cout<<"\n";
+        }
+ 
+        for(auto it:v)
+            ans.push_back(it);
+    }
+ 
+    for(auto it:ans)
+        cout<<it<<" ";
+ 
+ 
+}
+ 
+ 
+int main()
+{
+    int t;
+    cin>>t;
+    //t=1;
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+ 
+    }
+}
+ 
