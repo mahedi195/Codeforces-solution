@@ -1,0 +1,90 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+vector<ll>sieve()
+{
+    int n=1e6+5;
+    vector<bool>prime(n+1,true);
+    for(int i=2; i*i<=n; i++)
+    {
+        if(prime[i]==true)
+        {
+            for(int p=i*i; p<=n; p+=i)
+                prime[p]=false;
+        }
+    }
+ 
+    vector<ll>res;
+ 
+    for(ll i=2; i<=n; i++)
+    {
+        if(i*i>1e12)
+            break;
+        if(prime[i]==true)
+            //res.insert(i*i);
+            res.push_back(i*i);
+ 
+    }
+ 
+ 
+    return res;
+}
+ 
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    vector<ll>prime_square_number=sieve();
+ 
+    // for(auto it:prime_number) cout<<it<<" ";
+    //cout<<"\n\n";
+ 
+    int n;
+    cin>>n;
+    for(int i=0; i<n; i++)
+    {
+        ll x;
+        cin>>x;
+ 
+        int l=0, r=prime_square_number.size()-1;
+ 
+        bool ok=false;
+ 
+        while(l<=r)
+        {
+            int mid=l+(r-l)/2;
+            if(prime_square_number[mid]==x)
+            {
+                ok=true;
+                break;
+            }
+            if(prime_square_number[mid]<x)
+                l=mid+1;
+            else if(x<prime_square_number[mid])
+                r=mid-1;
+        }
+ 
+        cout<<(ok?"YES":"NO")<<"\n";
+    }
+}
+ 
+ 
+int main()
+{
+    int t;
+    //cin>>t;
+    t=1;
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+ 
+    }
+}
