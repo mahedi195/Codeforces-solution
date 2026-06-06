@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+struct custom_hash
+{
+    static uint64_t splitmix64(uint64_t x)
+    {
+        x += 0x9e3779b97f4a7c15;
+        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+        return x ^ (x >> 31);
+    }
+ 
+    size_t operator()(const string &s) const
+    {
+        uint64_t h = 0;
+        for(char c : s)
+            h = h * 31 + c;
+        return splitmix64(h);
+    }
+};
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    //set<string>s;
+    unordered_map<string,int,custom_hash>mp;
+    while(n--)
+    {
+        string s;
+        cin>>s;
+        if(mp[s]==0)
+        {
+            cout<<"OK";
+            //mp[s]++;
+        }
+        else
+        {
+            cout<<s<<mp[s];
+            //mp[s]++;
+ 
+        }
+        mp[s]++;
+        cout<<"\n";
+ 
+ 
+ 
+    }
+}
+ 
+ 
+int main()
+{
+    int t;
+    //cin>>t;
+    t=1;
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+ 
+    }
+}
+ 
