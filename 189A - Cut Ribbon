@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    int a,b,c;
+    cin>>a>>b>>c;
+ 
+    vector<int>coins={a,b,c};
+ 
+    vector<int>dp(n+1,INT_MIN);
+    dp[0]=0;
+ 
+    for(int i=1; i<=n; i++)
+    {
+        for (int c :coins)
+        {
+            if(i>=c && dp[i-c]!=INT_MIN)
+            {
+                dp[i]=max(dp[i],dp[i-c]+1);
+            }
+        }
+    }
+    cout << dp[n];
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    int t;
+    //cin>>t;
+    t=1;
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n";
+ 
+    }
+}
