@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+ 
+void prime_factorization(int n,map<int,int>&mp)
+{
+    for(int i=2; i*i<=n; i++)
+    {
+        if(n%i==0)
+        {
+            int cnt=0;
+            while(n%i==0)
+            {
+                n=n/i;
+                cnt++;
+            }
+            mp[i]+=cnt;
+        }
+    }
+ 
+    if(n>1) mp[n]++;
+    //return mp;
+}
+ 
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    map<int,int>freq;
+    for(int i=0; i<n; i++)
+    {
+        cin>>v[i];
+        prime_factorization(v[i],freq);
+    }
+ 
+    //  for(auto it:freq)
+    //     cout<<it.first<<" -> "<<it.second<<"\n";
+ 
+ 
+    for(auto it:freq)
+    {
+        if(it.second%n!=0)
+        {
+            cout<<"NO";
+            return;
+        }
+    }
+ 
+    cout<<"YES";
+ 
+ 
+ 
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
