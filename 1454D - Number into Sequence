@@ -1,0 +1,101 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+void fatorization(ll x,vector<ll>&base,vector<ll>&power ,
+                  ll &max_power,ll & max_power_val)
+{
+    for(ll i=2; i*i<=x; i++)
+    {
+        if(x%i==0)
+        {
+            ll cnt=0;
+            while(x%i==0)
+            {
+                x=x/i;
+                cnt++;
+            }
+ 
+            //cout<<i<<"^"<<cnt<<" , ";
+ 
+            base.push_back(i);
+            power.push_back(cnt);
+            //max_power=max(max_power,cnt);
+ 
+            if(max_power<cnt)
+            {
+                max_power=max(max_power,cnt);
+                max_power_val=i;
+            }
+        }
+    }
+ 
+    if(x>1)
+    {
+        base.push_back(x);
+        power.push_back(1);
+ 
+        if(max_power<1)
+        {
+            max_power=max(max_power,1LL);
+            max_power_val=x;
+        }
+ 
+        // cout<<x<<"^"<<1;
+    }
+ 
+ 
+}
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    ll n;
+    cin>>n;
+ 
+    vector<ll>base,power;
+    ll max_power=0,max_power_val=0;
+    fatorization(n,base,power,max_power,max_power_val);
+ 
+    vector<ll>ans(max_power,max_power_val);
+ 
+    for(int i=0; i<base.size(); i++)
+    {
+        if(base[i]==max_power_val)
+            continue;
+ 
+        int pos=max_power-1;
+        int po=power[i];
+        ll ba=base[i];
+ 
+        for(int j=pos,p=0; p<po ; j--,p++)
+            ans[j]*=ba;
+ 
+    }
+ 
+    cout<<max_power<<"\n";
+    for(auto it:ans) cout<<it<<" ";
+ 
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
