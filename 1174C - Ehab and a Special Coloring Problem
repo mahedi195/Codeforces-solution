@@ -9,25 +9,32 @@ const long long mod = 1e9 + 7;
 void mahedi_solve_this_prb()
 {
  
-    int n;
+    ll n;
     cin>>n;
-    //  vector<bool>prime(n+1,true);
+ 
+    vector<bool>primes(n+1,true);
     vector<int>ans(n+1,0);
  
     int col=0;
     for(int i=2; i<=n; i++)
     {
-        if(ans[i]==0)//prime i
+        if(primes[i]==true)
         {
             col++;
-            for(int j=i; j<=n; j+=i)
+            ans[i]=col;
+ 
+            for(ll j=1LL*i*i; j<=n; j+=i)
+            {
+                primes[j]=false;
                 ans[j]=col;
+ 
+            }
         }
     }
  
- 
     for(int i=2; i<=n; i++)
         cout<<ans[i]<<" ";
+ 
  
 }
  
@@ -46,4 +53,3 @@ int main()
  
     }
 }
- 
