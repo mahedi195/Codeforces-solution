@@ -1,0 +1,77 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n,c;
+    cin>>n>>c;
+    vector<int>a(n),b(n);
+    for(int i=0; i<n; i++) cin>>a[i];
+    for(int i=0; i<n; i++) cin>>b[i];
+ 
+    int  diff_sum=0;
+    int  ans=INT_MAX;
+ 
+    bool all_a_alue_greater=true;
+    for(int i=0; i<n; i++)
+    {
+        if(a[i]>=b[i]) diff_sum+=a[i]-b[i];
+        else if(a[i]<b[i]) all_a_alue_greater=false;
+ 
+    }
+ 
+    if(all_a_alue_greater) ans=min(ans,diff_sum);
+ 
+    //if(all_a_alue_greater)
+ 
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());
+ 
+    int  res=0;
+    bool again_all_a_alue_greater=true;
+ 
+    for(int i=0; i<n; i++)
+    {
+        if(a[i]>=b[i]) res+=a[i]-b[i];
+        else if(a[i]<b[i]) again_all_a_alue_greater=false;
+    }
+ 
+    if(again_all_a_alue_greater)
+    {
+        res+=c;
+        ans=min(ans,res);
+    }
+ 
+    if(!all_a_alue_greater && !again_all_a_alue_greater)
+        cout<<-1;
+    else cout<<ans;
+ 
+ 
+ 
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+    while(t--)
+    {
+ 
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
+ 
