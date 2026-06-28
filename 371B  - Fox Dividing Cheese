@@ -1,0 +1,76 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void cnt_divisor(int &a,int &cnt2,int &cnt3,int &cnt5)
+{
+    // int cnt2=0;
+    while(a%2==0)
+    {
+        a=a/2;
+        cnt2++;
+    }
+ 
+    // int cnt3=0;
+    while(a%3==0)
+    {
+        a=a/3;
+        cnt3++;
+    }
+ 
+    //int cnt5=0;
+    while(a%5==0)
+    {
+        a=a/5;
+        cnt5++;
+    }
+ 
+}
+ 
+void mahedi_solve_this_prb()
+{
+    int a,b;
+    cin>>a>>b;
+ 
+    int cnt2_a=0,cnt3_a=0,cnt5_a=0;
+    int cnt2_b=0,cnt3_b=0,cnt5_b=0;
+ 
+ 
+    cnt_divisor(a,cnt2_a,cnt3_a,cnt5_a);
+ 
+    cnt_divisor(b,cnt2_b,cnt3_b,cnt5_b);
+ 
+    //cout<<a<<" "<<b<<"\n";
+ 
+ 
+    if(a!=b)
+    {
+        cout<<-1;
+        return;
+    }
+ 
+    cout<<abs(cnt2_a-cnt2_b)+abs(cnt3_a-cnt3_b)+abs(cnt5_a-cnt5_b);
+    
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    //cin>>t;
+    t=1;
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
