@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int  n; cin>>n;
+    ll cnt=0;
+ 
+    for(int b=1;b<=n;b++)
+    {
+        int multiples_of_b=n/b;
+        cnt+=1LL*multiples_of_b*multiples_of_b;
+    }
+ 
+    cout<<cnt;
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+    while(t--)
+    {
+ 
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
