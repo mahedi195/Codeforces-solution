@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+void divisors(int n,int m)
+{
+    if(n==1)
+    {
+        cout<<"yes";
+        return;
+    }
+    
+    int smallest_divisors=n;
+    for(int i=2; i*i<=n; i++)
+    {
+        if(n%i==0)
+        {
+            smallest_divisors=i;
+            break;
+        }
+    }
+ 
+    if(smallest_divisors<=m) cout<<"NO";
+    else cout<<"YES";
+}
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n,m;
+    cin>>n>>m;
+    divisors(n,m);
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
