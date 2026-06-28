@@ -7,7 +7,7 @@ const long long mod = 1e9 + 7;
 #define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
  
  
-int cnt0(int n)
+int cnt_0(int n)
 {
     int ct=0;
     int five=5;
@@ -20,6 +20,70 @@ int cnt0(int n)
  
     return ct;
  
+}
+ 
+ 
+ 
+int leftside_value(int n)
+{
+    int l=1,r=1e6;
+    int ans=-1;
+    while(l<=r)
+    {
+        int mid=(l+r)/2;
+        if(cnt_0(mid)>=n)
+        {
+            ans=mid;
+            r=mid-1;
+        }
+        else l=mid+1;
+    }
+    return ans;
+ 
+}
+ 
+ 
+ 
+int rightside_value(int n)
+{
+    int ans=-1;
+    int l=1,r=1e6;
+    while(l<=r)
+    {
+        int mid=(l+r)/2;
+        if(cnt_0(mid)<=n)
+        {
+            ans=mid;
+            l=mid+1;
+ 
+ 
+           // r=mid-1;
+        }
+        else
+        {
+            //ans=mid;
+            r=mid-1;
+        }
+       // cout<<"l = "<<l<<"  r = "<<r<<"\n";
+ 
+    }
+ 
+    return ans;
+}
+ 
+ 
+ 
+vector<int>totalZero(int a,int b,int n)
+{
+    vector<int>v;
+ 
+    for(int i=a; i<=b; i++)
+    {
+        if(cnt_0(i)==n)
+            v.push_back(i);
+    }
+ 
+    return v;
  
 }
  
@@ -31,56 +95,13 @@ void mahedi_solve_this_prb()
     int n;
     cin>>n;
  
-    int l=1,r=1e6;
-    int left=-1;
-    while(l<=r)
-    {
-        int mid=(l+r)/2;
-        if(cnt0(mid)>=n)
-        {
-            left=mid;
-            r=mid-1;
-        }
-        else l=mid+1;
-    }
+    int l=leftside_value(n);
+    int r=rightside_value(n);
  
-    // cout<<left<<"  --->\n";
+    vector<int>ans=totalZero(l,r,n);
  
-    int right=-1;
-    l=1,r=1e6;
-    while(l<=r)
-    {
-        int mid=(l+r)/2;
-        if(cnt0(mid)<=n)
-        {
-            l=mid+1;
- 
-            //r=mid-1;
-        }
-        else
-        {
-            right=mid;
-            r=mid-1;
-        }
-        //cout<<"l = "<<l<<"  r = "<<r<<"\n";
- 
-    }
- 
-    //cout<<right<<" ==> \n";
- 
-    //int cnt=0;
-    vector<int>v;
-    for(int i=left; i<=right; i++)
-    {
-        if(cnt0(i)==n)
-            v.push_back(i);
-    }
- 
-    cout<<v.size()<<"\n";
-    for(auto it:v)
-        cout<<it<<" ";
-    cout<<"\n";
-    //cout<<cnt;
+    cout<<ans.size()<<"\n";
+    for(auto it:ans) cout<<it<<" ";
  
  
 }
@@ -101,5 +122,4 @@ int main()
  
     }
 }
- 
  
