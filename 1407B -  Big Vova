@@ -1,0 +1,82 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1000000
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    for(int i=0; i<n; i++) cin>>v[i];
+ 
+ 
+    vector<int>g,b;
+    int mx=0,mx_index=-1;
+    for(int i=0; i<n; i++)
+    {
+        if(v[i]>mx)
+        {
+            mx_index=i;
+            mx=v[i];
+        }
+ 
+    }
+    b.push_back(v[mx_index]);
+    g.push_back(v[mx_index]);
+    v.erase(v.begin()+mx_index);
+ 
+ 
+    //cout<<v[mx_index];
+ 
+    while(g.size()<n)
+    {
+ 
+ 
+        int mx_gcd=0;
+        for(int i=0; i<v.size(); i++)
+        {
+ 
+            int gcd_val=__gcd(g.back(),v[i]);
+            if(gcd_val>mx_gcd)
+            {
+                mx_gcd=gcd_val;
+                mx_index=i;
+            }
+ 
+        }
+ 
+        b.push_back(v[mx_index]);
+        g.push_back(mx_gcd);
+        v.erase(v.begin()+mx_index);
+        //cout<<mx_gcd<<" .  ";
+ 
+       // cout<<"\n";
+    }
+ 
+    for(auto it:b) cout<<it<<" ";
+ 
+ 
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
