@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+void mahedi_solve_this_prb()
+{
+    int n; cin>>n;
+    vector<pair<int,int>>v;
+    for(int i=0;i<n;i++)
+    {
+        int birth,death; cin>>birth>>death;
+        v.push_back({birth,1});
+        v.push_back({death,-1});
+ 
+    }
+ 
+    sort(v.begin(),v.end());
+ 
+    int maxi_alive=0;
+    int year=0;
+    int alive=0;
+    for(int i=0;i<v.size();i++)
+    {
+        if(v[i].second==1) alive++;
+        else alive--;
+ 
+        if(alive>maxi_alive)
+        {
+            maxi_alive=alive;
+            year=v[i].first;
+        }
+    }
+ 
+    cout<<year<<" "<<maxi_alive;
+ 
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    //cin>>t;
+    t=1;
+ 
+    while(t--)
+    {
+ 
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
