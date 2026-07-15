@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+const int N=2e5+5;
+int times_need_to_make_zero[N];
+int pref[N+2];
+ 
+ 
+int divide_by_three(int i)
+{
+    int cnt=0;
+    while(i>0)
+    {
+        i=i/3;
+        cnt++;
+    }
+ 
+    return cnt;
+ 
+}
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int l,r;
+    cin>>l>>r;
+ 
+    cout<<pref[r]-pref[l-1]+times_need_to_make_zero[l];
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+    for(int i=1; i<=N; i++)
+    {
+        times_need_to_make_zero[i]=divide_by_three(i);
+        pref[i]+=pref[i-1]+times_need_to_make_zero[i];
+ 
+    }
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
