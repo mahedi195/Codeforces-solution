@@ -1,0 +1,63 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+void mahedi_solve_this_prb()
+{
+ 
+    int mmod=998244353;
+ 
+    int n;
+    cin>>n;
+    vector<int>a(n),b(n);
+ 
+    for(int i=0; i<n; i++) cin>>a[i];
+    for(int i=0; i<n; i++) cin>>b[i];
+ 
+    int dp[n+1][2];
+    memset(dp,0,sizeof(dp));
+ 
+    dp[0][0]=dp[0][1]=1;
+ 
+    for(int i=1; i<n; i++)
+    {
+        if(a[i-1]<=b[i] && b[i-1]<=a[i])
+            dp[i][0]= (dp[i][0]+dp[i-1][0])%mmod;
+ 
+        if(a[i-1]<=a[i] && b[i-1]<=b[i])
+            dp[i][1]=(dp[i][1]+dp[i-1][0])%mmod;
+ 
+        if(a[i-1]<=b[i] && b[i-1]<=a[i])
+            dp[i][0]=(dp[i][0]+dp[i-1][1])%mmod;
+ 
+        if(a[i-1]<=a[i] && b[i-1]<=b[i])
+            dp[i][1]=(dp[i][1]+dp[i-1][1])%mmod;
+ 
+    }
+ 
+    cout<<(dp[n-1][0]+dp[n-1][1])%mmod;
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+    while(t--)
+    {
+ 
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
