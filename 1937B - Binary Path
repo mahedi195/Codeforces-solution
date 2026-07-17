@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    string top,bottom;
+    cin>>top>>bottom;
+    int pos=n;
+    for(int i=0; i<n-1; i++)
+    {
+        if(top[i+1]>bottom[i])
+        {
+            pos=i+1;
+            break;
+        }
+    }
+ 
+    cout<<top.substr(0,pos)+bottom.substr(pos-1,n)<<"\n";
+    int cnt=0;
+    for(int i=pos-2; i>=0; i--)
+    {
+        if(top[i+1]==bottom[i])
+            cnt++;
+        else break;
+    }
+ 
+    cout<<cnt+1;
+ 
+}
+ 
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
