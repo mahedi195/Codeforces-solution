@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n,k,m; cin>>n>>k>>m;
+    if(k>m)
+    {
+        cout<<"NO";
+        return;
+    }
+ 
+    vector<int>ans(n+1,1);
+    int minimum_val=m-(k-1);
+    //cout<<"minimum_val = "<<minimum_val<<"\n";
+    for(int i=k;i<=n;i+=k)
+        ans[i]=minimum_val;
+    cout<<"YES\n";
+    for(int i=1;i<=n;i++)
+        cout<<ans[i]<<" ";
+ 
+}
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    // t=1;
+ 
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
