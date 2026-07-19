@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+bool check(int row,int n, string top, string bottom )
+{
+ 
+    for(int i=0; i<n; i++)
+    {
+        if(row==0 && top[i]=='W') return false;
+        if(row==1 && bottom[i]=='W') return false;
+ 
+        if(top[i]=='B' && bottom[i]=='B')
+        {
+            if(row==0)
+                row=1;
+            else if(row==1)
+                row=0;
+        }
+    }
+    return true;
+}
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    string top,bottom;
+    cin>>top>>bottom;
+ 
+    if(check(0, n, top, bottom ) ||
+            check(1, n, top, bottom ))
+        cout<<"YES";
+    else cout<<"NO";
+ 
+}
+ 
+ 
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    // t=1;
+ 
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
