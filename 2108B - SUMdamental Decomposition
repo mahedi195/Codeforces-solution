@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+ 
+void mahedi_solve_this_prb()
+{
+    ll n,x;
+    cin>>n>>x;
+ 
+    if(x==0)
+    {
+        if(n==1) cout<<-1;
+        else if(n%2==1) cout<<n+3;
+        else if(n%2==0)cout<<n;
+        return;
+    }
+    else if(x==1)
+    {
+        if(n%2==0) cout<<n+3;
+        else cout<<n;
+    }
+    else
+    {
+        ll set_bits=__builtin_popcountll(x);
+        if(n<=set_bits) cout<<x;
+        else if(n>set_bits)
+        {
+            ll extra1=n-set_bits;
+            if(extra1%2==0) cout<<x+extra1;
+            else if(extra1%2==1) cout<<x+1+extra1;
+        }
+    }
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
