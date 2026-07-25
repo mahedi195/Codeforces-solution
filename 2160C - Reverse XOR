@@ -1,0 +1,94 @@
+#include <bits/stdc++.h>
+using namespace std;
+using  ll=long long;
+const double pi = 3.14159265358979323846;
+const long long mod = 1e9 + 7;
+#define oneMillion 1e6
+#define go_mahedi_go ios::sync_with_stdio(false), cin.tie(nullptr)
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    int n1=n;
+ 
+    if(n1==0)
+    {
+        cout<<"YES";
+        return;
+    }
+ 
+    //n1=n;
+    int initial_zero=0;
+   // cout<<"n1 = "<<n1<<"\n";
+    while((n1&1)==0)
+        // while(n1>0)
+    {
+        int x=n1&1;
+        // cout<<x<<"  --> \n";
+        initial_zero++;
+        n1=n1>>1;
+        //cout<<"n1 = "<<n1<<"\n";
+    }
+    //cout<<"inti 0 = "<<initial_zero<<"\n";
+    n1=n;
+    string s="";
+    while(n1>0)
+    {
+        if((n1&1)==0)
+            s+='0';
+        else s+='1';
+        n1=n1>>1;
+    }
+    reverse(s.begin(),s.end());
+ 
+    string s1="";
+    while(initial_zero>0)
+    {
+        s1+='0';
+        initial_zero--;
+    }
+    s=s1+s;
+    //cout<<s<<"\n\n";
+ 
+    int mid=s.size()/2;
+    for(int i=0,j=s.size()-1; i<mid; i++,j--)
+    {
+        if(s[i]!=s[j])
+        {
+            cout<<"NO";
+            return;
+        }
+    }
+ 
+    if(s.size()%2!=0)
+    {
+        if(s[mid]=='1')
+        {
+            cout<<"NO";
+            return;
+        }
+    }
+ 
+    cout<<"YES";
+ 
+ 
+}
+ 
+ 
+int main()
+{
+    //go_mahedi_go;
+    int t;
+    cin>>t;
+    //t=1;
+ 
+ 
+    while(t--)
+    {
+        mahedi_solve_this_prb();
+        cout<<"\n\n\n";
+ 
+    }
+}
+ 
