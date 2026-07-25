@@ -1,0 +1,81 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ll=long long;
+ 
+void mahedi_solve_this_prb()
+{
+    int n;
+    cin>>n;
+    vector<int>v(n);
+    int cntPos=0,cntNeg=0,cntZero=0;
+    for(int i=0; i<n; i++)
+    {
+        cin>>v[i];
+        if(v[i]==0) cntZero++;
+        else if(v[i]>0) cntPos++;
+        else cntNeg++;
+    }
+ 
+    if(cntNeg>2 || cntPos>2)
+    {
+        cout<<"No";
+        return;
+    }
+ 
+    vector<int>b;
+    if(cntZero==1) b.push_back(0);
+    else if(cntZero>=2)
+    {
+ 
+        b.push_back(0);
+        b.push_back(0);
+    }
+    set<int>s;
+    if(cntZero>0)
+        s.insert(0);
+ 
+    for(auto it:v)
+    {
+        if(it==0) continue;
+        b.push_back(it);
+        s.insert(it);
+    }
+ 
+ 
+    //vector<int>
+    for(int i=0; i<b.size(); i++)
+    {
+        for(int j=i+1; j<b.size(); j++)
+        {
+            for(int k=j+1; k<b.size(); k++)
+            {
+                ll sum=b[i]+b[j]+b[k];
+                if(s.count(sum)==0)
+                {
+                    cout<<"NO";
+                    return;
+                }
+ 
+            }
+        }
+    }
+ 
+    cout<<"Yes";
+ 
+ 
+ 
+}
+ 
+ 
+int main()
+{
+    int t;
+    // int t=1;
+ 
+    cin >> t;
+    while (t--)
+    {
+        mahedi_solve_this_prb();
+        cout << "\n\n\n";
+    }
+}
